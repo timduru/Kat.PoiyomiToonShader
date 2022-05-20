@@ -1,0 +1,83 @@
+#include "CGI_PoiAudioLink.cginc"
+
+float4 _Stored_TexelSize;
+uniform sampler2D _Stored;
+
+
+// Luma: 2 AudioBands - 7 Zones
+#define LUMAAUDIOBANDS 2 
+#define LUMAZONES 7
+
+// AUDIOLINK
+#define ALAUDIOBANDS 4
+#define ALZONES 4 // TODO remap to chords for 8.0
+
+//========  ZONE INFO  ==========
+	int ALMapping[ALAUDIOBANDS];
+
+	float2 Audio[LUMAAUDIOBANDS];
+	float2 lumaZonesData[LUMAZONES] ;
+	float3 simuZonesData[LUMAZONES];
+	float2 lumaAudioData ;
+
+	int _DebugMode ; //TODO
+	int lumaActive; 
+
+
+// Thry mapping : 
+// 0,1 => audio LOW/HIGH
+// 3,4,5,6 => zone 1-4 (3,4 = Heroes, 5,6 = Vilains)
+float getLumaData(int band, fixed time, fixed width, int variation)
+{
+	float data = 0;
+	int lumaIdx = ALMapping[band];
+	float StoredTextureTo = step(max(_Stored_TexelSize.z, _Stored_TexelSize.w), 500.0);
+	float2 offsetHeroesVilains = float2( 0.1,0.471 );
+
+	if(lumaIdx <=1)	// LUMA AUDIO 0,1
+	{
+		float2 lumaAudioReactiveZone = ( float2( 0.673,0.985 ) - offsetHeroesVilains );			
+		lumaAudioData = saturate((StoredTextureTo + tex2D(_Stored, lumaAudioReactiveZone)));
+		data = lumaAudioData[lumaIdx]; // 0=.x , 1=.y
+	}
+	else if(lumaIdx >=3)// HEROES / VILAINS ZONES x4  [3,4,5,6]
+	{
+		lumaZonesData[3] = ( float2( 0.955,0.992 ) - offsetHeroesVilains );
+		lumaZonesData[4] = ( float2( 0.964,0.992 ) - offsetHeroesVilains );
+		lumaZonesData[5] = ( float2( 0.955,0.978 ) - offsetHeroesVilains );
+		lumaZonesData[6] = ( float2( 0.964,0.978 ) - offsetHeroesVilains );
+
+		float2 lumaZoneLocation = lumaZonesData[lumaIdx];
+		data = saturate((tex2Dlod(_Stored, float4(lumaZoneLocation, 0.0, 0.0)) + StoredTextureTo));
+	}
+
+	if (variation==1) data = data - 0.5 * sin(time*width);
+
+	return data;
+}
+
+void initAudioBands()
+{
+	//TODO REMAP in Thry
+	ALMapping[0] = 0;
+	ALMapping[1] = 5;
+	ALMapping[2] = 1;
+	ALMapping[3] = 6;
+
+	lumaActive = 1; // TODO Properties
+
+	if (!lumaActive) { AL_initAudioBands(); return;}
+		
+	for (int i=0;i<4;i++)
+		poiMods.audioLink[i] = getLumaData(i, 0, 0, 1);
+	
+	poiMods.audioLinkTextureExists = 1;
+}
+
+float getBandAtTime(float band, fixed time, fixed width)
+{
+	if (!lumaActive) { return AL_getBandAtTime( band,  time,  width); }
+	return getLumaData(band, time, width, 1);
+
+//	return UNITY_SAMPLE_TEX2D(_AudioTexture, float2(time * width, (band * .25 + .125) * versionUvMultiplier)).r;
+}

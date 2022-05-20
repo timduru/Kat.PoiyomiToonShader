@@ -38,7 +38,7 @@ void AudioTextureExists()
 	}
 }
 
-float getBandAtTime(float band, fixed time, fixed width)
+float AL_getBandAtTime(float band, fixed time, fixed width)
 {
 	float versionUvMultiplier = 1;
 
@@ -49,7 +49,7 @@ float getBandAtTime(float band, fixed time, fixed width)
 	return UNITY_SAMPLE_TEX2D(_AudioTexture, float2(time * width, (band * .25 + .125) * versionUvMultiplier)).r;
 }
 
-void initAudioBands()
+void AL_initAudioBands()
 {
 	AudioTextureExists();
 
@@ -124,5 +124,7 @@ void initAudioBands()
 		}
 	#endif
 }
+
+
 
 #endif

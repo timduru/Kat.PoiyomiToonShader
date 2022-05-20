@@ -119,7 +119,8 @@ SOFTPARTICLES_ON
 #endif
 
 #ifdef COLOR_GRADING_LOG_VIEW
-	#include "CGI_PoiAudioLink.cginc"
+#include "CGI_LumaInjector.cginc"
+//#include "CGI_PoiAudioLink.cginc"
 #endif
 
 #ifdef USER_LUT
