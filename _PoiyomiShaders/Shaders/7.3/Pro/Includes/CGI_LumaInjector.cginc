@@ -3,11 +3,11 @@
 
 //Thry Settings
 fixed _EnableLuma;
-fixed _ALMappingBass=0; // Luma LOW Band
-fixed _ALMappingLowMid=3; // "Heroes 1"
-fixed _ALMappingHighMid=5; // "Vilains1"
-fixed _ALMappingTreble=1; // Luma High Band
-fixed _EmissionPulseVariation=1;
+fixed _ALMappingBass; // Default Luma LOW Band
+fixed _ALMappingLowMid; // "Heroes 1"
+fixed _ALMappingHighMid; // "Vilains1"
+fixed _ALMappingTreble; // Luma High Band
+fixed _EmissionPulseVariation;
 
 //========  GLOBAL  ==========
 // Luma: 2 AudioBands - 7 Zones
