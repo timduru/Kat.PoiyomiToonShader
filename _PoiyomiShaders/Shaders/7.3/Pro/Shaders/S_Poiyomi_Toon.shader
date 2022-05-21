@@ -3,7 +3,7 @@
     Properties
     {
         [HideInInspector] shader_is_using_thry_editor ("", Float) = 0
-        [HideInInspector] shader_master_label ("<color=#E75898ff>Poiyomi Toon V7.3.050-Kat.Luma001</color>", Float) = 0
+        [HideInInspector] shader_master_label ("<color=#E75898ff>Poiyomi Toon V7.3.050_KatLuma-1.0.0.Beta1</color>", Float) = 0
         [HideInInspector] shader_presets ("poiToonPresets", Float) = 0
         [HideInInspector] shader_properties_label_file ("7PlusLabels", Float) = 0
         
