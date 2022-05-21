@@ -1,5 +1,7 @@
 # This is a modified version of the original Poiyomi Shader with added Luma structure support
-The main goal is to bring support for the reactive Luma/Audio structure pixels that are used to make the avatars react in the [Furality](https://furality.org/) convention's worlds.
+Please note that it is not an official Furality Luma Shader, so don't ask for support to Furality staff about it.
+
+The main goal is to bring Luma support directly into the feature rich poiyomi shader for the reactive Luma/Audio structure pixels that are used to make the avatars react in the [Furality](https://furality.org/) convention's worlds.
 
 The structure was made to work with the Furality's own shader and be controlled in real time by VJs during Furality's events, but the shader has to support it to react to the world.
 Furality's shader is nice and is the best to use for the event if you don't already have audiolink materials on your avatars or have time to port them.
@@ -13,8 +15,8 @@ They will however react "poiyomi style" and depend on your existing poiyomi's au
 
 # Requirements
 - For the moment the Luma Injector is added into the 7.3 Free Toon version of poiyomi, so your materials must use that version to benefit from it. (I might see later on to add it to 8.0 too but most people are still using 7.3 atm imho)
-- The Luma Injector is injecting/remapping into poiyomi's existing audiolink system, as such your materials must have audiolink activated.
-- As this version is based onto the Free Poiyomi Toon shader, if you are on the Pro version you would need to switch back to the toon 7.3 version, overwriting the includes directory into the 7.3 Pro version with the include directory from this version might work too. (not tested)
+- The Luma Injector is injecting/remapping into poiyomi's existing audiolink system, as such your materials must have audiolink activated and configured on your material for it to do something.
+- As this version is based onto the Free Poiyomi Toon shader, if you are on the Pro version you would need to switch back to the toon 7.3 version.
 
 # Installation
 This version package will simply install/replace the existing _PoiyomiShaders folder of the Free Poiyomi Toon version,  like the original unitypackage does.
