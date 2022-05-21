@@ -26,7 +26,7 @@ uniform sampler2D _Stored;
 
 // Thry mapping : 
 // 0,1 => audio LOW/HIGH
-// 3,4,5,6 => zone 1-4 (3,4 = Heroes, 5,6 = Vilains)
+// 3,4,5,6 => Luma zones 1-4 (3,4 = Heroes, 5,6 = Vilains)
 float getLumaData(int band, fixed time, fixed width, int variation)
 {
 	float data = 0;
@@ -38,9 +38,9 @@ float getLumaData(int band, fixed time, fixed width, int variation)
 	{
 		float2 lumaAudioReactiveZone = ( float2( 0.673,0.985 ) - offsetHeroesVilains );			
 		lumaAudioData = saturate((StoredTextureTo + tex2D(_Stored, lumaAudioReactiveZone)));
-		data = lumaAudioData[lumaIdx]; // 0=.x , 1=.y
+		data = lumaAudioData[lumaIdx]; // 0=.x(LOW) , 1=.y(HIGH)
 	}
-	else if(lumaIdx >=3)// HEROES / VILAINS ZONES x4  [3,4,5,6]
+	else if(lumaIdx >=3)// LUMA HEROES / VILAINS ZONES x4  [3,4,5,6]
 	{
 		lumaZonesData[3] = ( float2( 0.955,0.992 ) - offsetHeroesVilains );
 		lumaZonesData[4] = ( float2( 0.964,0.992 ) - offsetHeroesVilains );
@@ -48,10 +48,11 @@ float getLumaData(int band, fixed time, fixed width, int variation)
 		lumaZonesData[6] = ( float2( 0.964,0.978 ) - offsetHeroesVilains );
 
 		float2 lumaZoneLocation = lumaZonesData[lumaIdx];
-		data = saturate((tex2Dlod(_Stored, float4(lumaZoneLocation, 0.0, 0.0)) + StoredTextureTo));
+		float3 rgb = saturate( StoredTextureTo + tex2D(_Stored, lumaZoneLocation ));
+		data = (rgb.r + rgb.g + rgb.b)/3;
 	}
 
-	if (variation==1) data = data - 0.5 * sin(time*width);
+	if (variation == 1) data = saturate(0.5*data + 0.3*cos(2*time) - 0.3 * sin(time*width));
 
 	return data;
 }
