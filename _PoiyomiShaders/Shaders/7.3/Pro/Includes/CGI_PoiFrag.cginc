@@ -404,7 +404,7 @@ float4 frag(v2f i, uint facing: SV_IsFrontFace): SV_Target
 
 	#ifdef POI_AUDIOLINK
 		UNITY_BRANCH
-		if (_AudioLinkTextureVisualization)
+		if (_AudioLinkTextureVisualization || _LumaTextureVisualization)
 		{
 			finalColor = poiMods.audioLinkTexture;
 		}

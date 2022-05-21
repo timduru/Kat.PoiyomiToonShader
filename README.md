@@ -17,7 +17,7 @@ They will however react "poiyomi style" and depend on your existing poiyomi's au
 
 # Installation
 This version package will simply install/replace the existing _PoiyomiShaders Toon folder like the original unitypackage does.
-- click onto the Kat unitypackage to import it into unity, it should autodetect changes (if it doesn't you can also simply delete the existing _Poiyomi folder in Assets before hand , then import the new unitypackage)
+- click onto the Kat unitypackage to import it into unity, it should autodetect changes (if it doesn't you can also simply delete the existing _PoiyomiShaders folder in Assets before hand , then import the new unitypackage)
 
 It might not be necessary but as Poiyomi has its locking materials, the optimized shaders when your material are locked are like a specific shader copy of when it was locked. 
 In order to force a refresh with the new code, you might need to unlock / relock all the poiyomi materials:

@@ -1244,6 +1244,8 @@
         [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingTreble ("AudioLink Treble Mapping", Int) = 1
         [ToggleUI] _EmissionPulseVariation ("Emission Pulse Variation", Float) = 1
 
+        [ToggleUI]_LumaTextureVisualization("Debug: Visualize Luma Texture onto the object", Float) = 0
+
         [HideInInspector] m_end_luma ("Luma Injector", Float) = 0
 
 

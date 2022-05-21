@@ -1,4 +1,3 @@
-
 #include "CGI_PoiAudioLink.cginc"
 
 //Thry Settings
@@ -8,6 +7,7 @@ fixed _ALMappingLowMid; // "Heroes 1"
 fixed _ALMappingHighMid; // "Vilains1"
 fixed _ALMappingTreble; // Luma High Band
 fixed _EmissionPulseVariation;
+fixed _LumaTextureVisualization;
 
 //========  GLOBAL  ==========
 // Luma: 2 AudioBands - 7 Zones
@@ -65,22 +65,27 @@ float getLumaData(int band, fixed time, fixed width, int variation)
 
 void initAudioBands()
 {
+	
 	ALMapping[0] = _ALMappingBass;
 	ALMapping[1] = _ALMappingLowMid;
 	ALMapping[2] = _ALMappingHighMid;
 	ALMapping[3] = _ALMappingTreble;
 
-	if (!_EnableLuma) { AL_initAudioBands(); return;}
+	if (!_EnableLuma ) { AL_initAudioBands(); return;}
 		
 	for (int i=0;i<4;i++)
 		poiMods.audioLink[i] = getLumaData(i, 0, 0, _EmissionPulseVariation);
 	
 	poiMods.audioLinkTextureExists = 1;
+
+	if (_LumaTextureVisualization == 1)
+	{
+		poiMods.audioLinkTexture = tex2D(_Stored, poiMesh.uv[0]);
+	}
 }
 
 float getBandAtTime(float band, fixed time, fixed width)
 {
-	if (!_EnableLuma
-	) { return AL_getBandAtTime( band,  time,  width); }
+	if (!_EnableLuma ) { return AL_getBandAtTime( band,  time,  width); }
 	return getLumaData(band, time, width, _EmissionPulseVariation);
 }
