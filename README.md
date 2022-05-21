@@ -12,11 +12,13 @@ But if you're like me, you might already have a bunch of Avatars using poiyomi w
 This shader will be a drop in replacement for the original poiyomi that will allow you to reuse these audiolink materials as-is and make them react inside of Furality's worlds without further modifications.
 They will however react "poiyomi style" and depend on your existing poiyomi's audiolink configuration.
 
+# Latest package: see [Releases/Assets](https://github.com/timduru/Kat.PoiyomiToonShader/releases) 
 
 # Requirements
 - For the moment the Luma Injector is added into the 7.3 Free Toon version of poiyomi, so your materials must use that version to benefit from it. (I might see later on to add it to 8.0 too but most people are still using 7.3 atm imho)
 - The Luma Injector is injecting/remapping into poiyomi's existing audiolink system, as such your materials must have audiolink activated and configured on your material for it to do something.
 - As this version is based onto the Free Poiyomi Toon shader, if you are on the Pro version you would need to switch back to the toon 7.3 version.
+
 
 # Installation
 This version package will simply install/replace the existing _PoiyomiShaders folder of the Free Poiyomi Toon version,  like the original unitypackage does.
