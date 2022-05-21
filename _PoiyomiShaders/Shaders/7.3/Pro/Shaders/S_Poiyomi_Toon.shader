@@ -1232,7 +1232,21 @@
         [ToggleUI]_AudioLinkTextureVisualization("Visualize Texture", Float) = 0
         [HideInInspector] m_end_audioLinkDebug ("Debug", Float) = 0
         [HideInInspector] m_end_audioLink ("Audio Link", Float) = 0
-        
+
+
+        // Luma Injector
+        [HideInInspector] m_start_luma ("Luma Injector--{reference_property:_EnableLuma}", Float) = 0
+        [HideInInspector][ThryToggle(COLOR_GRADING_LOG_VIEW)] _EnableLuma ("Enabled?", Float) = 1
+        [Helpbox(1)] _LumaHelp ("This section houses the global controls for The Luma Injector. It allows you to remap and inject the Furality World's reactive structure data into the 4 AudioLink audio bands, so that your existing audiolink materials can react inside Furality's worlds by triggering their audiolink settings", Int) = 0
+        [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingBass ("AudioLink Bass Mapping", Int) = 0
+        [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingLowMid ("AudioLink Low Mid Mapping", Int) = 3
+        [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingHighMid ("AudioLink High Mid Mapping", Int) = 5
+        [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingTreble ("AudioLink Treble Mapping", Int) = 1
+        [ToggleUI] _EmissionPulseVariation ("Emission Pulse Variation", Float) = 1
+
+        [HideInInspector] m_end_luma ("Luma Injector", Float) = 0
+
+
         // Start Patreon
         [HideInInspector] m_Patreon ("Patreon (Pro Only)", Float) = 0
         [Helpbox(1)] _PatreonHelpBox("This section is included to let people know what's included in the pro shader. Nothing here can be used in toon. Feel free to hide this section with the custom UI dropdown at the top of the material.", Int) = 0

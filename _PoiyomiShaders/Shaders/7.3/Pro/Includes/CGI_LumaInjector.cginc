@@ -1,28 +1,34 @@
+
 #include "CGI_PoiAudioLink.cginc"
 
-float4 _Stored_TexelSize;
-uniform sampler2D _Stored;
+//Thry Settings
+fixed _EnableLuma;
+fixed _ALMappingBass=0; // Luma LOW Band
+fixed _ALMappingLowMid=3; // "Heroes 1"
+fixed _ALMappingHighMid=5; // "Vilains1"
+fixed _ALMappingTreble=1; // Luma High Band
+fixed _EmissionPulseVariation=1;
 
-
+//========  GLOBAL  ==========
 // Luma: 2 AudioBands - 7 Zones
 #define LUMAAUDIOBANDS 2 
 #define LUMAZONES 7
 
 // AUDIOLINK
 #define ALAUDIOBANDS 4
-#define ALZONES 4 // TODO remap to chords for 8.0
+#define ALZONES 4 // TODO remap to chords for Poiyomi 8.0
 
-//========  ZONE INFO  ==========
-	int ALMapping[ALAUDIOBANDS];
+float4 _Stored_TexelSize;
+uniform sampler2D _Stored;
 
-	float2 Audio[LUMAAUDIOBANDS];
-	float2 lumaZonesData[LUMAZONES] ;
-	float3 simuZonesData[LUMAZONES];
+
+//========  ZONE/AUDIO INFO  ==========
 	float2 lumaAudioData ;
+	int ALMapping[ALAUDIOBANDS];
+	float2 lumaZonesData[LUMAZONES] ;
 
-	int _DebugMode ; //TODO
-	int lumaActive; 
-
+//	int _SimulationMode ; //TODO
+//	float3 simuZonesData[LUMAZONES];
 
 // Thry mapping : 
 // 0,1 => audio LOW/HIGH
@@ -40,7 +46,7 @@ float getLumaData(int band, fixed time, fixed width, int variation)
 		lumaAudioData = saturate((StoredTextureTo + tex2D(_Stored, lumaAudioReactiveZone)));
 		data = lumaAudioData[lumaIdx]; // 0=.x(LOW) , 1=.y(HIGH)
 	}
-	else if(lumaIdx >=3)// LUMA HEROES / VILAINS ZONES x4  [3,4,5,6]
+	else if(lumaIdx >=3) // LUMA ZONES x4  [3,4,5,6]
 	{
 		lumaZonesData[3] = ( float2( 0.955,0.992 ) - offsetHeroesVilains );
 		lumaZonesData[4] = ( float2( 0.964,0.992 ) - offsetHeroesVilains );
@@ -59,26 +65,22 @@ float getLumaData(int band, fixed time, fixed width, int variation)
 
 void initAudioBands()
 {
-	//TODO REMAP in Thry
-	ALMapping[0] = 0;
-	ALMapping[1] = 5;
-	ALMapping[2] = 1;
-	ALMapping[3] = 6;
+	ALMapping[0] = _ALMappingBass;
+	ALMapping[1] = _ALMappingLowMid;
+	ALMapping[2] = _ALMappingHighMid;
+	ALMapping[3] = _ALMappingTreble;
 
-	lumaActive = 1; // TODO Properties
-
-	if (!lumaActive) { AL_initAudioBands(); return;}
+	if (!_EnableLuma) { AL_initAudioBands(); return;}
 		
 	for (int i=0;i<4;i++)
-		poiMods.audioLink[i] = getLumaData(i, 0, 0, 1);
+		poiMods.audioLink[i] = getLumaData(i, 0, 0, _EmissionPulseVariation);
 	
 	poiMods.audioLinkTextureExists = 1;
 }
 
 float getBandAtTime(float band, fixed time, fixed width)
 {
-	if (!lumaActive) { return AL_getBandAtTime( band,  time,  width); }
-	return getLumaData(band, time, width, 1);
-
-//	return UNITY_SAMPLE_TEX2D(_AudioTexture, float2(time * width, (band * .25 + .125) * versionUvMultiplier)).r;
+	if (!_EnableLuma
+	) { return AL_getBandAtTime( band,  time,  width); }
+	return getLumaData(band, time, width, _EmissionPulseVariation);
 }
