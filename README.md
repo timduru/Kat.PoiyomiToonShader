@@ -42,21 +42,20 @@ This version of the shader will allow you to inject and remap into audiolink's 4
 - The 2 Furality audio channels (LOW and HIGH)
 - The 4 Luma "Heroes and Vilains" Zones (they will most likely be called differently for furality Aqua but the data structure is the same, so they should work the same)
 
-![image](https://user-images.githubusercontent.com/2088877/169650150-55b3b87c-f874-4fca-af9e-50dc11a1163d.png)
+![image](https://user-images.githubusercontent.com/2088877/169941586-4774a74b-b913-451c-8a90-f67dcc50d161.png)
 
 The shader includes Luma Worlds autodetection, so you can also leave it on at all time, and when you're not in a luma world it'll automatically switch back to audiolink only.
 
 You also have the Enable switch that can be animated so that you can enable/disable the feature at will at run time through an animation.
 When Disabled the behaviour will simply also go back and behave like before with the regular audiolink driver.
 
-In addition there is an Emission Pulse Variation parameter: what it does is that it makes the animations/values vary through time.
+In addition there is an Emission Pulse Variation option: what it does is that it makes the animations/values vary through time.
 when it's checked it will look more like a pulsing effect compared to blinking "hard" when it's unchecked.
 It's mostly used for audiolink centerOut and such that are originally using AudioLink's temporal history which Luma doesn't have.
-So that setting tries to emulate something so that it doesn't only blinks "Hard"
-(ie what it does when you uncheck the box)
-
-Without having past values history the effect will however be different than the original AudioLink Center Out though.
-I might see about improving that at some point and add more effects.
+So that setting tries to emulate something so that it doesn't only blinks "Hard" (it will however not look like the original CenterOut with audiolink)
+You can fine tune it more if needed: 
+- Variation Strength is the amount of variation introduced in addition to the luma data
+- Variation amount of emission to keep active when no data: allows to set how much of the emission you want to keep when the luma data has a value of 0. that way your emission is not fully dark even when there is no activity in luma zones. 
 
 The Debug Visualize Luma Texture option, is just that: it'll override the material so that it can display the Luma Data texture for debug purposes. I guess not many are going to use it, but it's there if you need it ;)
 

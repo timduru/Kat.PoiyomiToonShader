@@ -9,7 +9,9 @@ fixed _ALMappingBass; // Default Luma LOW Band
 fixed _ALMappingLowMid; // "Heroes 1"
 fixed _ALMappingHighMid; // "Vilains1"
 fixed _ALMappingTreble; // Luma High Band
+fixed _EnableEmissionPulseVariation;
 fixed _EmissionPulseVariation;
+fixed _EmissionPulseVariationMinValue;
 fixed _LumaTextureVisualization;
 
 //========  GLOBAL  ==========
@@ -66,7 +68,7 @@ float getLumaData(int band, fixed time, fixed width, int variation)
 		data = (rgb.r + rgb.g + rgb.b)/3;
 	}
 
-	if (variation == 1) data = saturate(0.5*data + 0.3*cos(2*time) - 0.3 * sin(time*width));
+	if (variation == 1) data = saturate(0.5*data + _EmissionPulseVariation*(_EmissionPulseVariationMinValue*cos(2*time) - _EmissionPulseVariationMinValue * sin(time*width)));
 
 	return data;
 }
@@ -82,7 +84,7 @@ void initAudioBands()
 	if (!_EnableLuma || !isLumaWorld()) { AL_initAudioBands(); return;}
 		
 	for (int i=0;i<4;i++)
-		poiMods.audioLink[i] = getLumaData(i, 0, 0, _EmissionPulseVariation);
+		poiMods.audioLink[i] = getLumaData(i, 0, 0, _EnableEmissionPulseVariation);
 	
 	poiMods.audioLinkTextureExists = 1;
 
@@ -95,7 +97,7 @@ void initAudioBands()
 float getBandAtTime(float band, fixed time, fixed width)
 {
 	if (!_EnableLuma || !isLumaWorld()) { return AL_getBandAtTime( band,  time,  width); }
-	return getLumaData(band, time, width, _EmissionPulseVariation);
+	return getLumaData(band, time, width, _EnableEmissionPulseVariation);
 }
 
 #endif

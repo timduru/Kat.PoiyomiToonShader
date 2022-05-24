@@ -3,7 +3,7 @@
     Properties
     {
         [HideInInspector] shader_is_using_thry_editor ("", Float) = 0
-        [HideInInspector] shader_master_label ("<color=#E75898ff>Poiyomi Toon V7.3.050_KatLuma-1.0.0.Beta1</color>", Float) = 0
+        [HideInInspector] shader_master_label ("<color=#E75898ff>Poiyomi Toon V7.3.050_KatLuma-1.0.0.Beta2</color>", Float) = 0
         [HideInInspector] shader_presets ("poiToonPresets", Float) = 0
         [HideInInspector] shader_properties_label_file ("7PlusLabels", Float) = 0
         
@@ -1242,7 +1242,10 @@
         [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingLowMid ("AudioLink Low Mid Mapping", Int) = 3
         [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingHighMid ("AudioLink High Mid Mapping", Int) = 5
         [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingTreble ("AudioLink Treble Mapping", Int) = 1
-        [ToggleUI] _EmissionPulseVariation ("Emission Pulse Variation", Float) = 1
+        
+        [ToggleUI] _EnableEmissionPulseVariation ("Emission Pulse Variation", Float) = 1
+        _EmissionPulseVariation("Variation Strength (0 = no variation, 1 = full variation)--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 1
+        _EmissionPulseVariationMinValue("Variation amount of emission to keep active when no data--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 0.4
 
         [ToggleUI]_LumaTextureVisualization("Debug: Visualize Luma Texture onto the object", Float) = 0
 
