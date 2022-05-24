@@ -1,3 +1,6 @@
+#ifndef KAT_LUMAINJECTOR
+#define KAT_LUMAINJECTOR
+
 #include "CGI_PoiAudioLink.cginc"
 
 //Thry Settings
@@ -89,3 +92,5 @@ float getBandAtTime(float band, fixed time, fixed width)
 	if (!_EnableLuma ) { return AL_getBandAtTime( band,  time,  width); }
 	return getLumaData(band, time, width, _EmissionPulseVariation);
 }
+
+#endif
