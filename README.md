@@ -17,7 +17,7 @@ They will however react "poiyomi style" and depend on your existing poiyomi's au
 # Requirements
 - For the moment the Luma Injector is added into the 7.3 Free Toon version of poiyomi, so your materials must use that version to benefit from it. (I might see later on to add it to 8.0 too but most people are still using 7.3 atm imho)
 - The Luma Injector is injecting/remapping into poiyomi's existing audiolink system, as such your materials must have audiolink activated and configured on your material for it to do something.
-- As this version is based onto the Free Poiyomi Toon shader, if you are on the Pro version you would need to switch back to the toon 7.3 version.
+- As this version is based onto the Free Poiyomi Toon shader, if you are on the Pro version you would need to switch your material back to the toon 7.3 version.
 
 
 # Installation
@@ -44,8 +44,10 @@ This version of the shader will allow you to inject and remap into audiolink's 4
 
 ![image](https://user-images.githubusercontent.com/2088877/169650150-55b3b87c-f874-4fca-af9e-50dc11a1163d.png)
 
-The Enable switch can be animated so that you can disable it outside of Furality's worlds.
-When Disabled the behaviour will simply go back and behave like before with the regular audiolink driver.
+The shader includes Luma Worlds autodetection, so you can also leave it on at all time, and when you're not in a luma world it'll automatically switch back to audiolink only.
+
+You also have the Enable switch that can be animated so that you can enable/disable the feature at will at run time through an animation.
+When Disabled the behaviour will simply also go back and behave like before with the regular audiolink driver.
 
 In addition there is an Emission Pulse Variation parameter: what it does is that it makes the animations/values vary through time.
 when it's checked it will look more like a pulsing effect compared to blinking "hard" when it's unchecked.
@@ -56,16 +58,13 @@ So that setting tries to emulate something so that it doesn't only blinks "Hard"
 Without having past values history the effect will however be different than the original AudioLink Center Out though.
 I might see about improving that at some point and add more effects.
 
-The Debug Visualize Luma Texture option, is just that: it'll override the material so that it can display the Luma Data texture for debug purposes.
+The Debug Visualize Luma Texture option, is just that: it'll override the material so that it can display the Luma Data texture for debug purposes. I guess not many are going to use it, but it's there if you need it ;)
+
 
 # Uninstallation
 Same procedure but with the original poiyomi package instead of the Kat Luma package.
 
 It should be pretty straightforward but as usual with unity: backup everything before hand in case something goes wrong, so that you can restore the full project too :D
-
-# Current Limitations
-- There's not yet auto detection of Luma worlds, so you might just want to add a menu toggle to disable the Luma Injector when you're not into a Luma World.
-Or create a specific version upload of your avatars using this shader for luma.
 
 
 # Credits:

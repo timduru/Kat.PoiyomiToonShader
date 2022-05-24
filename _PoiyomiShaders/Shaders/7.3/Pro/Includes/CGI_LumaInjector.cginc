@@ -33,6 +33,11 @@ uniform sampler2D _Stored;
 //	int _SimulationMode ; //TODO
 //	float3 simuZonesData[LUMAZONES];
 
+bool isLumaWorld()
+{
+	return _Stored_TexelSize.z > 1;
+}
+
 // Thry mapping : 
 // 0,1 => audio LOW/HIGH
 // 3,4,5,6 => Luma zones 1-4 (3,4 = Heroes, 5,6 = Vilains)
@@ -74,7 +79,7 @@ void initAudioBands()
 	ALMapping[2] = _ALMappingHighMid;
 	ALMapping[3] = _ALMappingTreble;
 
-	if (!_EnableLuma ) { AL_initAudioBands(); return;}
+	if (!_EnableLuma || !isLumaWorld()) { AL_initAudioBands(); return;}
 		
 	for (int i=0;i<4;i++)
 		poiMods.audioLink[i] = getLumaData(i, 0, 0, _EmissionPulseVariation);
@@ -89,7 +94,7 @@ void initAudioBands()
 
 float getBandAtTime(float band, fixed time, fixed width)
 {
-	if (!_EnableLuma ) { return AL_getBandAtTime( band,  time,  width); }
+	if (!_EnableLuma || !isLumaWorld()) { return AL_getBandAtTime( band,  time,  width); }
 	return getLumaData(band, time, width, _EmissionPulseVariation);
 }
 
