@@ -4,7 +4,7 @@
 #include "CGI_PoiAudioLink.cginc"
 
 //Thry Settings
-fixed _EnableLuma;
+float _EnableLuma;
 fixed _ALMappingBass; // Default Luma LOW Band
 fixed _ALMappingLowMid; // "Heroes 1"
 fixed _ALMappingHighMid; // "Vilains1"
@@ -35,9 +35,9 @@ uniform sampler2D _Stored;
 //	int _SimulationMode ; //TODO
 //	float3 simuZonesData[LUMAZONES];
 
-bool isLumaWorld()
+bool isLumaMode()
 {
-	return _Stored_TexelSize.z > 1;
+	return (_EnableLuma && _Stored_TexelSize.z > 1);
 }
 
 // Thry mapping : 
@@ -81,7 +81,7 @@ void initAudioBands()
 	ALMapping[2] = _ALMappingHighMid;
 	ALMapping[3] = _ALMappingTreble;
 
-	if (!_EnableLuma || !isLumaWorld()) { AL_initAudioBands(); return;}
+	if (!isLumaMode()) { AL_initAudioBands(); return;}
 		
 	for (int i=0;i<4;i++)
 		poiMods.audioLink[i] = getLumaData(i, 0, 0, _EnableEmissionPulseVariation);
@@ -96,7 +96,7 @@ void initAudioBands()
 
 float getBandAtTime(float band, fixed time, fixed width)
 {
-	if (!_EnableLuma || !isLumaWorld()) { return AL_getBandAtTime( band,  time,  width); }
+	if (!isLumaMode()) { return AL_getBandAtTime( band,  time,  width); }
 	return getLumaData(band, time, width, _EnableEmissionPulseVariation);
 }
 

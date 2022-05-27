@@ -1236,7 +1236,7 @@
 
         // Luma Injector
         [HideInInspector] m_start_luma ("Luma Injector--{condition_showS:_EnableAudioLink==1}", Float) = 0
-        [ThryToggle(COLOR_GRADING_LOG_VIEW)] _EnableLuma ("Enable", Float) = 1
+        [ThryToggle] _EnableLuma ("Enable", Float) = 1
         [Helpbox(1)] _LumaHelp ("This section houses the global controls for The Luma Injector. It allows you to remap and inject the Furality World's reactive structure data into the 4 AudioLink audio bands, so that your existing audiolink materials can react inside Furality's worlds by triggering their audiolink settings", Int) = 0
         [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingBass ("AudioLink Bass Mapping", Int) = 0
         [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingLowMid ("AudioLink Low Mid Mapping", Int) = 3
