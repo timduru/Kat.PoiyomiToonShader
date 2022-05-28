@@ -13,6 +13,9 @@ fixed _EnableEmissionPulseVariation;
 fixed _EmissionPulseVariation;
 fixed _EmissionPulseVariationMinValue;
 fixed _LumaTextureVisualization;
+fixed _EnableEmissionBidirectionnalVariation;
+fixed _EmissionBlinkingVariation;
+fixed _EmissionBlinkingVariationMinValue;
 
 //========  GLOBAL  ==========
 // Luma: 2 AudioBands - 7 Zones
@@ -43,9 +46,10 @@ bool isLumaMode()
 // Thry mapping : 
 // 0,1 => audio LOW/HIGH
 // 3,4,5,6 => Luma zones 1-4 (3,4 = Heroes, 5,6 = Vilains)
-float getLumaData(int band, fixed time, fixed width, int variation)
+float getLumaData(int band, fixed time, fixed width, int variation, int bidirectionnalVariation)
 {
 	float data = 0;
+	float basedata = 0;
 	int lumaIdx = ALMapping[band];
 	float StoredTextureTo = step(max(_Stored_TexelSize.z, _Stored_TexelSize.w), 500.0);
 	float2 offsetHeroesVilains = float2( 0.1,0.471 );
@@ -65,10 +69,20 @@ float getLumaData(int band, fixed time, fixed width, int variation)
 
 		float2 lumaZoneLocation = lumaZonesData[lumaIdx];
 		float3 rgb = saturate( StoredTextureTo + tex2D(_Stored, lumaZoneLocation ));
-		data = (rgb.r + rgb.g + rgb.b)/3;
+		data = basedata = (rgb.r + rgb.g + rgb.b)/3;
+		//data = max(data, _EmissionPulseVariationMinValue);
 	}
 
-	if (variation == 1) data = saturate(0.5*data + _EmissionPulseVariation*(_EmissionPulseVariationMinValue*cos(2*time) - _EmissionPulseVariationMinValue * sin(time*width)));
+	if (variation == 1) 
+	{
+		data =  saturate(0.5*data + _EmissionPulseVariation*(_EmissionPulseVariationMinValue*cos(2*time) - _EmissionPulseVariationMinValue * sin(time*width)));
+	}
+
+	if (bidirectionnalVariation == 1) 
+	{
+		//data *= saturate(basedata-poiLight.nDotV);
+		data =  _EmissionBlinkingVariationMinValue* data*saturate(poiLight.nDotV)* (sin(time * 2) * abs(cos(_EmissionBlinkingVariation*_Time.w*3 ) + 2*sin(_EmissionBlinkingVariation*_Time.w*2 + width  )) + data)  ;
+	}
 
 	return data;
 }
@@ -84,7 +98,7 @@ void initAudioBands()
 	if (!isLumaMode()) { AL_initAudioBands(); return;}
 		
 	for (int i=0;i<4;i++)
-		poiMods.audioLink[i] = getLumaData(i, 0, 0, _EnableEmissionPulseVariation);
+		poiMods.audioLink[i] = getLumaData(i, 0, 0, _EnableEmissionPulseVariation, 0);
 	
 	poiMods.audioLinkTextureExists = 1;
 
@@ -97,7 +111,7 @@ void initAudioBands()
 float getBandAtTime(float band, fixed time, fixed width)
 {
 	if (!isLumaMode()) { return AL_getBandAtTime( band,  time,  width); }
-	return getLumaData(band, time, width, _EnableEmissionPulseVariation);
+	return getLumaData(band, time, width, _EnableEmissionPulseVariation, _EnableEmissionBidirectionnalVariation);
 }
 
 #endif

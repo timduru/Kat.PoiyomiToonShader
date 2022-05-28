@@ -3,7 +3,7 @@
     Properties
     {
         [HideInInspector] shader_is_using_thry_editor ("", Float) = 0
-        [HideInInspector] shader_master_label ("<color=#E75898ff>Poiyomi Toon V7.3.050_KatLuma-1.0.0</color>", Float) = 0
+        [HideInInspector] shader_master_label ("<color=#E75898ff>Poiyomi Toon V7.3.050_KatLuma-1.1.0</color>", Float) = 0
         [HideInInspector] shader_presets ("poiToonPresets", Float) = 0
         [HideInInspector] shader_properties_label_file ("7PlusLabels", Float) = 0
         
@@ -1246,6 +1246,9 @@
         [ToggleUI] _EnableEmissionPulseVariation ("Emission Pulse Variation", Float) = 1
         _EmissionPulseVariation("Variation Strength (0 = no variation, 1 = full variation)--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 1
         _EmissionPulseVariationMinValue("Variation amount of emission to keep active when no data--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 0.4
+        [ToggleUI] _EnableEmissionBidirectionnalVariation ("Center Out Additional Blinking Variation ", Float) = 1
+        _EmissionBlinkingVariation("Blinking speed--{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 1
+        _EmissionBlinkingVariationMinValue("Amount of blinking when no data --{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 1
 
         [ToggleUI]_LumaTextureVisualization("Debug: Visualize Luma Texture onto the object", Float) = 0
 

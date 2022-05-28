@@ -24,7 +24,6 @@ They will however react "poiyomi style" and depend on your existing poiyomi's au
 This package will simply install/replace the existing _PoiyomiShaders folder of the Free Poiyomi Toon version,  like the original unitypackage does.
 - click onto the Kat unitypackage to import it into unity, it should autodetect file changes (if it doesn't and that you are only using 7.x Toon already, you can also simply delete the existing _PoiyomiShaders folder in Assets before hand, then import the new unitypackage)
 
-
 In order to force a refresh with the new shader code, you will need to unlock / relock all the poiyomi materials you want to use with the new shader:
 - click onto all you avatars you want to upgrade to the Poi-Luma version in unity's Hierarchy. (ctrl + click for multiple selection)
 - Then right click on the selections and choose Thry=> materials => UnlockAll
@@ -42,7 +41,7 @@ This version of the shader will allow you to inject and remap into audiolink's 4
 - The 2 Furality audio channels (LOW and HIGH)
 - The 4 Luma "Heroes and Vilains" Zones (they will most likely be called differently for furality Aqua but the data structure is the same, so they should work the same)
 
-![image](https://user-images.githubusercontent.com/2088877/169941586-4774a74b-b913-451c-8a90-f67dcc50d161.png)
+![image](https://user-images.githubusercontent.com/2088877/170816247-7fee7fb0-ad3b-4058-9002-4c546a12ae95.png)
 
 The shader includes Luma Worlds autodetection, so you can also leave it on at all time, and when you're not in a luma world it'll automatically switch back to audiolink only.
 
@@ -56,6 +55,7 @@ So that setting tries to emulate something so that it doesn't only blinks "Hard"
 You can fine tune it more if needed: 
 - Variation Strength is the amount of variation introduced in addition to the luma data
 - Variation amount of emission to keep active when no data: allows to set how much of the emission you want to keep when the luma data has a value of 0. that way your emission is not fully dark even when there is no activity in luma zones. 
+- Additionnal blinking on top of luma data, with speed, and amount sliders
 
 The Debug Visualize Luma Texture option, is just that: it'll override the material so that it can display the Luma Data texture for debug purposes. I guess not many are going to use it, but it's there if you need it ;)
 
