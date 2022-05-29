@@ -16,6 +16,8 @@ fixed _LumaTextureVisualization;
 fixed _EnableEmissionBidirectionnalVariation;
 fixed _EmissionBlinkingVariation;
 fixed _EmissionBlinkingVariationMinValue;
+float _LumaDataAudioMultiplicator;
+float _LumaDataZoneMultiplicator;
 
 //========  GLOBAL  ==========
 // Luma: 2 AudioBands - 7 Zones
@@ -59,7 +61,7 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 	{
 		float2 lumaAudioReactiveZone = ( float2( 0.673,0.985 ) - offsetHeroesVilains );			
 		lumaAudioData = saturate((UNITY_SAMPLE_TEX2D(_Stored, lumaAudioReactiveZone)));
-		data = lumaAudioData[lumaIdx]; // 0=.x(LOW) , 1=.y(HIGH)
+		data = _LumaDataAudioMultiplicator * lumaAudioData[lumaIdx]; // 0=.x(LOW) , 1=.y(HIGH)
 	}
 	else if(lumaIdx >=3) // LUMA ZONES x4  [3,4,5,6]
 	{
@@ -70,7 +72,7 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 
 		float2 lumaZoneLocation = lumaZonesData[lumaIdx];
 		float3 rgb = saturate( UNITY_SAMPLE_TEX2D(_Stored, lumaZoneLocation ));
-		data = basedata = (rgb.r + rgb.g + rgb.b)/3;
+		data = basedata = _LumaDataZoneMultiplicator * (rgb.r + rgb.g + rgb.b)/3;
 	}
 
 	if (variation == 1) 
