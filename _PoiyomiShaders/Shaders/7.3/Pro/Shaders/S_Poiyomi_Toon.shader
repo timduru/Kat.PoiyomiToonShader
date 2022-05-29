@@ -1237,30 +1237,39 @@
         // Luma Injector
         [HideInInspector] m_start_luma ("Luma To AudioLink Injector--{condition_showS:_EnableAudioLink==1}", Float) = 0
         [ThryToggle] _EnableLuma ("Enable", Float) = 1
-
-        _LumaDataAudioMultiplicator("Luma Audio Data Multiplicator ", Range(0,10)) = 1
-        _LumaDataZoneMultiplicator("Luma Zone Data Multiplicator ", Range(0,10)) = 1
-        _LumaDataGradientZoneMultiplicator("Luma Gradient Zone Data Multiplicator ", Range(0,10)) = 1
-
         [Helpbox(1)] _LumaHelp ("This section houses the global controls for The Luma Injector. It allows you to remap and inject the Furality World's reactive structure data into the 4 AudioLink audio bands, so that your existing audiolink materials can react inside Furality's worlds by triggering their audiolink settings", Int) = 0
-        [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Gradient Zones, 2, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingBass ("AudioLink Bass Mapping", Int) = 0
-        [Enum(GradientZone1, 0,GradientZone2, 1,GradientZone3, 2)] _ALMappingBassGradientZone ("AudioLink Bass Gradient Zone--{condition_showS:_ALMappingBass==2}", Int) = 0
 
-        [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Gradient Zones, 2, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingLowMid ("AudioLink Low Mid Mapping", Int) = 3
-        [Enum(GradientZone1, 0,GradientZone2, 1,GradientZone3, 2)] _ALMappingLowMidGradientZone ("AudioLink Low Mid Gradient Zone--{condition_showS:_ALMappingLowMid==2}", Int) = 0
+        [HideInInspector] m_start_Multiplicators ("Multiplicators", Float) = 0
+            _LumaDataAudioMultiplicator("Luma Audio Data Multiplicator ", Range(0,10)) = 1
+            _LumaDataZoneMultiplicator("Luma Zone Data Multiplicator ", Range(0,10)) = 1
+            _LumaDataGradientZoneMultiplicator("Luma Gradient Zone Data Multiplicator ", Range(0,10)) = 1
+        [HideInInspector] m_end_Multiplicators ("Multiplicators", Float) = 0
 
-        [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Gradient Zones, 2, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingHighMid ("AudioLink High Mid Mapping", Int) = 5
-        [Enum(GradientZone1, 0,GradientZone2, 1,GradientZone3, 2)] _ALMappingHighMidGradientZone ("AudioLink High Mid Gradient Zone--{condition_showS:_ALMappingHighMid==2}", Int) = 0
+        [HideInInspector] m_start_Mappings ("Mappings", Float) = 0
+            [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Gradient Zones, 2, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingBass ("AudioLink Bass Mapping", Int) = 0
+            [Enum(GradientZone1, 0,GradientZone2, 1,GradientZone3, 2)] _ALMappingBassGradientZone ("AudioLink Bass Gradient Zone--{condition_showS:_ALMappingBass==2}", Int) = 0
 
-        [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Gradient Zones, 2, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingTreble ("AudioLink Treble Mapping", Int) = 1
-        [Enum(GradientZone1, 0,GradientZone2, 1,GradientZone3, 2)] _ALMappingTrebleGradientZone ("AudioLink Treble Gradient Zone--{condition_showS:_ALMappingTreble==2}", Int) = 0
-        
-        [ToggleUI] _EnableEmissionPulseVariation ("Emission Pulse Variation", Float) = 1
-        _EmissionPulseVariation("Variation Strength (0 = no variation, 1 = full variation)--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 1
-        _EmissionPulseVariationMinValue("Variation amount of emission to keep active when no data--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 0.4
-        [ToggleUI] _EnableEmissionBidirectionnalVariation ("Center Out Additional Bidirectional Variation ", Float) = 1
-        _EmissionBlinkingVariation("Amount of bidirectional variation--{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 1
-        _EmissionBlinkingVariationMinValue("Amount of blinking when no data --{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 1
+            [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Gradient Zones, 2, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingLowMid ("AudioLink Low Mid Mapping", Int) = 2
+            [Enum(GradientZone1, 0,GradientZone2, 1,GradientZone3, 2)] _ALMappingLowMidGradientZone ("AudioLink Low Mid Gradient Zone--{condition_showS:_ALMappingLowMid==2}", Int) = 1
+
+            [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Gradient Zones, 2, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingHighMid ("AudioLink High Mid Mapping", Int) = 5
+            [Enum(GradientZone1, 0,GradientZone2, 1,GradientZone3, 2)] _ALMappingHighMidGradientZone ("AudioLink High Mid Gradient Zone--{condition_showS:_ALMappingHighMid==2}", Int) = 2
+
+            [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Gradient Zones, 2, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingTreble ("AudioLink Treble Mapping", Int) = 1
+            [Enum(GradientZone1, 0,GradientZone2, 1,GradientZone3, 2)] _ALMappingTrebleGradientZone ("AudioLink Treble Gradient Zone--{condition_showS:_ALMappingTreble==2}", Int) = 0
+        [HideInInspector] m_end_Mappings ("Mappings", Float) = 0
+
+        [HideInInspector] m_start_variations ("Additional Variations For CenterOut", Float) = 0
+            [ToggleUI] _EnableEmissionPulseVariation ("Emission Pulse Variation", Float) = 1
+            [ToggleUI] _DisableEmissionPulseVariationForGradientZones ("Auto Disable For Gradient Zone--{condition_showS:_EnableEmissionPulseVariation==1}", Float) = 0
+            _EmissionPulseVariation("Variation Strength (0 = no variation, 1 = full variation)--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 1
+            _EmissionPulseVariationMinValue("Variation amount of emission to keep active when no data--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 0.4
+
+            [ToggleUI] _EnableEmissionBidirectionnalVariation ("Center Out Additional Bidirectional Variation ", Float) = 1
+            [ToggleUI] _DisableEmissionBidirectionnalVariationForGradientZones ("Auto Disable For Gradient Zone--{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Float) = 0
+            _EmissionBlinkingVariation("Speed of bidirectional variation--{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 1
+            _EmissionBlinkingVariationMinValue("Amount of blinking when no data --{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 0.8
+        [HideInInspector] m_end_variations ("Additional Variations For CenterOut", Float) = 0
 
         [ToggleUI]_LumaTextureVisualization("Debug: Visualize Luma Texture onto the object", Float) = 0
 

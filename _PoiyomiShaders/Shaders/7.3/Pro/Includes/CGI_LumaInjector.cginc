@@ -20,6 +20,9 @@ float _LumaDataAudioMultiplicator;
 float _LumaDataZoneMultiplicator;
 float _LumaDataGradientZoneMultiplicator;
 
+fixed _DisableEmissionPulseVariationForGradientZones;
+fixed _DisableEmissionBidirectionnalVariationForGradientZones;
+
 //========  GLOBAL  ==========
 // Luma: 2 AudioBands - 7 Zones
 #define LUMAAUDIOBANDS 2 
@@ -76,7 +79,9 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 
 		int lumaGradientIndex = ALMappingGradient[band];
 		float2 lumaZoneLocation = lumaZonesData[lumaGradientIndex];
-		lumaZoneLocation.x += GradientWidth/2; // use middle of gradient 
+
+		//lumaZoneLocation.x += GradientWidth/2; // use middle of gradient 
+		lumaZoneLocation.x += time * GradientWidth;
 
 		float3 rgb = saturate( UNITY_SAMPLE_TEX2D(_Stored, lumaZoneLocation ));
 		data = basedata = _LumaDataGradientZoneMultiplicator * (rgb.r + rgb.g + rgb.b)/3;
@@ -93,12 +98,12 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 		data = basedata = _LumaDataZoneMultiplicator * (rgb.r + rgb.g + rgb.b)/3;
 	}
 
-	if (variation == 1) 
+	if (variation == 1 && !(mainMappingIndex == 2 && _DisableEmissionPulseVariationForGradientZones)) 
 	{
 		data =  saturate(0.5*data + _EmissionPulseVariation*(_EmissionPulseVariationMinValue*cos(2*time) - _EmissionPulseVariationMinValue * sin(time*width)));
 	}
 
-	if (bidirectionnalVariation == 1) 
+	if (bidirectionnalVariation == 1 && !(mainMappingIndex == 2 && _DisableEmissionBidirectionnalVariationForGradientZones)) 
 	{
 		data =  _EmissionBlinkingVariationMinValue* data*saturate(poiLight.nDotV)* (sin(time * 2) * abs(cos(_EmissionBlinkingVariation*_Time.w*3 ) + 2*sin(_EmissionBlinkingVariation*_Time.w*2 + width  )) + data)  ;
 	}
