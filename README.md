@@ -33,7 +33,7 @@ You can also unlock/relock specific individual materials as needed instead of al
 If your materials are not using Poioyomi Toon 7.3.x already, you will need to switch the material to that first.
 It should show that it is using a  -KatLumaXXXX version similar to this capture: 
 
-![image](https://user-images.githubusercontent.com/2088877/169650133-3f983486-8d8b-423f-a4b5-ed92d299c015.png)
+![image](https://user-images.githubusercontent.com/2088877/170861955-33baeae4-8ef7-4b3c-b8b0-b9b0953693c7.png)
 
 
 # Configuration
@@ -41,12 +41,23 @@ This version of the shader will allow you to inject and remap into audiolink's 4
 - The 2 Furality audio channels (LOW and HIGH)
 - The 4 Luma "Heroes and Vilains" Zones (they will most likely be called differently for furality Aqua but the data structure is the same, so they should work the same)
 
-![image](https://user-images.githubusercontent.com/2088877/170816247-7fee7fb0-ad3b-4058-9002-4c546a12ae95.png)
+![image](https://user-images.githubusercontent.com/2088877/170861548-3d708867-ecca-463f-938c-fb2c8acc0961.png)
 
 The shader includes Luma Worlds autodetection, so you can also leave it on at all time, and when you're not in a luma world it'll automatically switch back to audiolink only.
-
-You also have the Enable switch that can be animated so that you can enable/disable the feature at will at run time through an animation.
+You also have the Enable switch that can be animated so that you can enable/disable the feature at will at run time through an animation in case autodetection fails. 
 When Disabled the behaviour will simply also go back and behave like before with the regular audiolink driver.
+
+## Luma Data Multiplicators
+You have 2 multiplicators available:
+- Luma Audio Data
+- Luma Zone Data
+
+If you animate these with a menu slider they will allow you to quickly correct the live values fed by the world.
+It happened last year for example that the audio data sent by the world were too low or too high and saturated for some of the DJs
+So the Audio Data Multiplicator will allow to correct that in real time.
+The zones data are usually controlled by the DJs and their levels are usually ok, but just in case there's also another slider for them too :)
+
+## Additional variation parameters
 
 In addition there is an Emission Pulse Variation option: what it does is that it makes the animations/values vary through time.
 when it's checked it will look more like a pulsing effect compared to blinking "hard" when it's unchecked.
@@ -55,7 +66,7 @@ So that setting tries to emulate something so that it doesn't only blinks "Hard"
 You can fine tune it more if needed: 
 - Variation Strength is the amount of variation introduced in addition to the luma data
 - Variation amount of emission to keep active when no data: allows to set how much of the emission you want to keep when the luma data has a value of 0. that way your emission is not fully dark even when there is no activity in luma zones. 
-- Additionnal blinking on top of luma data, with speed, and amount sliders
+- Additionnal bidirectional effect on top of luma data, with speed, and amount sliders
 
 The Debug Visualize Luma Texture option, is just that: it'll override the material so that it can display the Luma Data texture for debug purposes. I guess not many are going to use it, but it's there if you need it ;)
 
@@ -66,15 +77,18 @@ Same procedure but with the original poiyomi package instead of the Kat Luma pac
 It should be pretty straightforward but as usual with unity: backup everything before hand in case something goes wrong, so that you can restore the full project too :D
 
 
-# Credits:
-- Poiyomi Shader by .. Poiyomi :)
-- Original Furality Shader created by Naito Ookami
+# Links:
 
 ## Original Poiyomi shader information:
 -  [Join the discord here](https://poiyomi.com)
 - [Download the latest unity package here](https://github.com/poiyomi/PoiyomiToonShader/releases/latest)
 
 Make a donation there for his work if you have not done so already,  99.9% of the shader is his :)
+
+## Official Furality Shader created by Naito Ookami can be found on Furality's website: 
+- [Furality.org](https://furality.org)
+
+
 
 
 
