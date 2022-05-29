@@ -53,13 +53,12 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 	float data = 0;
 	float basedata = 0;
 	int lumaIdx = ALMapping[band];
-	float StoredTextureTo = step(max(_Stored_TexelSize.z, _Stored_TexelSize.w), 500.0);
 	float2 offsetHeroesVilains = float2( 0.1,0.471 );
 
 	if(lumaIdx <=1)	// LUMA AUDIO 0,1
 	{
 		float2 lumaAudioReactiveZone = ( float2( 0.673,0.985 ) - offsetHeroesVilains );			
-		lumaAudioData = saturate((StoredTextureTo + UNITY_SAMPLE_TEX2D(_Stored, lumaAudioReactiveZone)));
+		lumaAudioData = saturate((UNITY_SAMPLE_TEX2D(_Stored, lumaAudioReactiveZone)));
 		data = lumaAudioData[lumaIdx]; // 0=.x(LOW) , 1=.y(HIGH)
 	}
 	else if(lumaIdx >=3) // LUMA ZONES x4  [3,4,5,6]
@@ -70,9 +69,8 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 		lumaZonesData[6] = ( float2( 0.964,0.978 ) - offsetHeroesVilains );
 
 		float2 lumaZoneLocation = lumaZonesData[lumaIdx];
-		float3 rgb = saturate( StoredTextureTo + UNITY_SAMPLE_TEX2D(_Stored, lumaZoneLocation ));
+		float3 rgb = saturate( UNITY_SAMPLE_TEX2D(_Stored, lumaZoneLocation ));
 		data = basedata = (rgb.r + rgb.g + rgb.b)/3;
-		//data = max(data, _EmissionPulseVariationMinValue);
 	}
 
 	if (variation == 1) 
@@ -82,7 +80,6 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 
 	if (bidirectionnalVariation == 1) 
 	{
-		//data *= saturate(basedata-poiLight.nDotV);
 		data =  _EmissionBlinkingVariationMinValue* data*saturate(poiLight.nDotV)* (sin(time * 2) * abs(cos(_EmissionBlinkingVariation*_Time.w*3 ) + 2*sin(_EmissionBlinkingVariation*_Time.w*2 + width  )) + data)  ;
 	}
 

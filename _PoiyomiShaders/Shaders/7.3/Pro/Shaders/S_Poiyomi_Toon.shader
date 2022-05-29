@@ -1237,6 +1237,7 @@
         // Luma Injector
         [HideInInspector] m_start_luma ("Luma To AudioLink Injector--{condition_showS:_EnableAudioLink==1}", Float) = 0
         [ThryToggle] _EnableLuma ("Enable", Float) = 1
+
         [Helpbox(1)] _LumaHelp ("This section houses the global controls for The Luma Injector. It allows you to remap and inject the Furality World's reactive structure data into the 4 AudioLink audio bands, so that your existing audiolink materials can react inside Furality's worlds by triggering their audiolink settings", Int) = 0
         [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingBass ("AudioLink Bass Mapping", Int) = 0
         [Enum(Luma Audio LOW Band, 0, Luma Audio HIGH Band, 1, Luma Zone1, 3, Luma Zone2, 4, Luma Zone3, 5, Luma Zone4, 6)] _ALMappingLowMid ("AudioLink Low Mid Mapping", Int) = 3
@@ -1246,8 +1247,8 @@
         [ToggleUI] _EnableEmissionPulseVariation ("Emission Pulse Variation", Float) = 1
         _EmissionPulseVariation("Variation Strength (0 = no variation, 1 = full variation)--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 1
         _EmissionPulseVariationMinValue("Variation amount of emission to keep active when no data--{condition_showS:_EnableEmissionPulseVariation==1}", Range(0,1)) = 0.4
-        [ToggleUI] _EnableEmissionBidirectionnalVariation ("Center Out Additional Blinking Variation ", Float) = 1
-        _EmissionBlinkingVariation("Blinking speed--{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 1
+        [ToggleUI] _EnableEmissionBidirectionnalVariation ("Center Out Additional Bidirectional Variation ", Float) = 1
+        _EmissionBlinkingVariation("Amount of bidirectional variation--{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 1
         _EmissionBlinkingVariationMinValue("Amount of blinking when no data --{condition_showS:_EnableEmissionBidirectionnalVariation==1}", Range(0,1)) = 1
 
         [ToggleUI]_LumaTextureVisualization("Debug: Visualize Luma Texture onto the object", Float) = 0
