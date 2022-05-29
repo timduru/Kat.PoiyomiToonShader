@@ -37,28 +37,30 @@ It should show that it is using a  -KatLumaXXXX version similar to this capture:
 
 
 # Configuration
-This version of the shader will allow you to inject and remap into audiolink's 4 audio channels:
+This version of the shader will allow you to inject and remap into the 4 audiolink channels:
 - The 2 Furality audio channels (LOW and HIGH)
 - The 4 Luma "Heroes and Vilains" Zones (they will most likely be called differently for furality Aqua but the data structure is the same, so they should work the same)
+- The 3 Luma2 Gradient Zones 
 
-![image](https://user-images.githubusercontent.com/2088877/170861548-3d708867-ecca-463f-938c-fb2c8acc0961.png)
+![image](https://user-images.githubusercontent.com/2088877/170865420-80e9708f-6f4a-4615-b9c6-8846c5fc1d48.png)
 
 The shader includes Luma Worlds autodetection, so you can also leave it on at all time, and when you're not in a luma world it'll automatically switch back to audiolink only.
 You also have the Enable switch that can be animated so that you can enable/disable the feature at will at run time through an animation in case autodetection fails. 
 When Disabled the behaviour will simply also go back and behave like before with the regular audiolink driver.
 
 ## Luma Data Multiplicators
-You have 2 multiplicators available:
+You have 3 multiplicators available:
 - Luma Audio Data
 - Luma Zone Data
+- Luma Gradient Zone Data
 
 If you animate these with a menu slider they will allow you to quickly correct the live values fed by the world.
 It happened last year for example that the audio data sent by the world were too low or too high and saturated for some of the DJs
 So the Audio Data Multiplicator will allow to correct that in real time.
-The zones data are usually controlled by the DJs and their levels are usually ok, but just in case there's also another slider for them too :)
+The zones data are usually controlled by the VJs and their levels are usually ok, but just in case there's also 2 other sliders for them too :)
+You can also turn off one or more Data structure type if you set its multiplicator to 0 that way too.
 
 ## Additional variation parameters
-
 In addition there is an Emission Pulse Variation option: what it does is that it makes the animations/values vary through time.
 when it's checked it will look more like a pulsing effect compared to blinking "hard" when it's unchecked.
 It's mostly used for audiolink centerOut and such that are originally using AudioLink's temporal history which Luma doesn't have.

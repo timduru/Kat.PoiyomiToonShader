@@ -18,6 +18,7 @@ fixed _EmissionBlinkingVariation;
 fixed _EmissionBlinkingVariationMinValue;
 float _LumaDataAudioMultiplicator;
 float _LumaDataZoneMultiplicator;
+float _LumaDataGradientZoneMultiplicator;
 
 //========  GLOBAL  ==========
 // Luma: 2 AudioBands - 7 Zones
@@ -34,6 +35,8 @@ UNITY_DECLARE_TEX2D(_Stored);
 //========  ZONE/AUDIO INFO  ==========
 	float2 lumaAudioData ;
 	int ALMapping[ALAUDIOBANDS];
+	int ALMappingGradient[ALAUDIOBANDS];
+
 	float2 lumaZonesData[LUMAZONES] ;
 
 //	int _SimulationMode ; //TODO
@@ -47,6 +50,7 @@ bool isLumaMode()
 	return (_EnableLuma && min(width,height) >=128);
 }
 
+
 // Thry mapping : 
 // 0,1 => audio LOW/HIGH
 // 3,4,5,6 => Luma zones 1-4 (3,4 = Heroes, 5,6 = Vilains)
@@ -54,23 +58,37 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 {
 	float data = 0;
 	float basedata = 0;
-	int lumaIdx = ALMapping[band];
+	int mainMappingIndex = ALMapping[band];
 	float2 offsetHeroesVilains = float2( 0.1,0.471 );
 
-	if(lumaIdx <=1)	// LUMA AUDIO 0,1
+	if(mainMappingIndex <=1)	// LUMA AUDIO 0,1
 	{
 		float2 lumaAudioReactiveZone = ( float2( 0.673,0.985 ) - offsetHeroesVilains );			
 		lumaAudioData = saturate((UNITY_SAMPLE_TEX2D(_Stored, lumaAudioReactiveZone)));
-		data = _LumaDataAudioMultiplicator * lumaAudioData[lumaIdx]; // 0=.x(LOW) , 1=.y(HIGH)
+		data = _LumaDataAudioMultiplicator * lumaAudioData[mainMappingIndex]; // 0=.x(LOW) , 1=.y(HIGH)
 	}
-	else if(lumaIdx >=3) // LUMA ZONES x4  [3,4,5,6]
+	if(mainMappingIndex ==2)	// 3 Gradient Zones, need second mapping because of UI limitation of max enums to 7 
+	{
+		float GradientWidth = 0.107;
+		lumaZonesData[0] = float2(0.57,0.49 ); 	// Gradient 1
+		lumaZonesData[1] = float2(0.6805,0.49); // Gradient 2
+		lumaZonesData[2] = float2(0.791,0.49);	// Gradient 3
+
+		int lumaGradientIndex = ALMappingGradient[band];
+		float2 lumaZoneLocation = lumaZonesData[lumaGradientIndex];
+		lumaZoneLocation.x += GradientWidth/2; // use middle of gradient 
+
+		float3 rgb = saturate( UNITY_SAMPLE_TEX2D(_Stored, lumaZoneLocation ));
+		data = basedata = _LumaDataGradientZoneMultiplicator * (rgb.r + rgb.g + rgb.b)/3;
+	}	
+	else if(mainMappingIndex >=3) // LUMA ZONES x4  [3,4,5,6]
 	{
 		lumaZonesData[3] = ( float2( 0.955,0.992 ) - offsetHeroesVilains );
 		lumaZonesData[4] = ( float2( 0.964,0.992 ) - offsetHeroesVilains );
 		lumaZonesData[5] = ( float2( 0.955,0.978 ) - offsetHeroesVilains );
 		lumaZonesData[6] = ( float2( 0.964,0.978 ) - offsetHeroesVilains );
 
-		float2 lumaZoneLocation = lumaZonesData[lumaIdx];
+		float2 lumaZoneLocation = lumaZonesData[mainMappingIndex];
 		float3 rgb = saturate( UNITY_SAMPLE_TEX2D(_Stored, lumaZoneLocation ));
 		data = basedata = _LumaDataZoneMultiplicator * (rgb.r + rgb.g + rgb.b)/3;
 	}
@@ -90,7 +108,7 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 
 void initAudioBands()
 {
-	
+
 	ALMapping[0] = _ALMappingBass;
 	ALMapping[1] = _ALMappingLowMid;
 	ALMapping[2] = _ALMappingHighMid;
