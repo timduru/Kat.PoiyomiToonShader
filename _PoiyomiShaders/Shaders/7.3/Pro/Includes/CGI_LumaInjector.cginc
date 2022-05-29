@@ -27,8 +27,7 @@ fixed _EmissionBlinkingVariationMinValue;
 #define ALZONES 4 // TODO remap to chords for Poiyomi 8.0
 
 float4 _Stored_TexelSize;
-uniform sampler2D _Stored;
-
+UNITY_DECLARE_TEX2D(_Stored);
 
 //========  ZONE/AUDIO INFO  ==========
 	float2 lumaAudioData ;
@@ -40,7 +39,10 @@ uniform sampler2D _Stored;
 
 bool isLumaMode()
 {
-	return (_EnableLuma && _Stored_TexelSize.z > 1);
+	float width = 0;
+	float height = 0;
+	_Stored.GetDimensions(width, height);
+	return (_EnableLuma && min(width,height) >=128);
 }
 
 // Thry mapping : 
@@ -57,7 +59,7 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 	if(lumaIdx <=1)	// LUMA AUDIO 0,1
 	{
 		float2 lumaAudioReactiveZone = ( float2( 0.673,0.985 ) - offsetHeroesVilains );			
-		lumaAudioData = saturate((StoredTextureTo + tex2D(_Stored, lumaAudioReactiveZone)));
+		lumaAudioData = saturate((StoredTextureTo + UNITY_SAMPLE_TEX2D(_Stored, lumaAudioReactiveZone)));
 		data = lumaAudioData[lumaIdx]; // 0=.x(LOW) , 1=.y(HIGH)
 	}
 	else if(lumaIdx >=3) // LUMA ZONES x4  [3,4,5,6]
@@ -68,7 +70,7 @@ float getLumaData(int band, fixed time, fixed width, int variation, int bidirect
 		lumaZonesData[6] = ( float2( 0.964,0.978 ) - offsetHeroesVilains );
 
 		float2 lumaZoneLocation = lumaZonesData[lumaIdx];
-		float3 rgb = saturate( StoredTextureTo + tex2D(_Stored, lumaZoneLocation ));
+		float3 rgb = saturate( StoredTextureTo + UNITY_SAMPLE_TEX2D(_Stored, lumaZoneLocation ));
 		data = basedata = (rgb.r + rgb.g + rgb.b)/3;
 		//data = max(data, _EmissionPulseVariationMinValue);
 	}
@@ -104,7 +106,7 @@ void initAudioBands()
 
 	if (_LumaTextureVisualization == 1)
 	{
-		poiMods.audioLinkTexture = tex2D(_Stored, poiMesh.uv[0]);
+		poiMods.audioLinkTexture = UNITY_SAMPLE_TEX2D(_Stored, poiMesh.uv[0]);
 	}
 }
 
