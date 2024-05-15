@@ -24,6 +24,8 @@ Simply download the KatFuralityUmbra-PoiyomiToon-9.0.shader from the latest [Rel
 
 If your material is already on a Poi9.0.x version, simply switch to this shader version from the Material shader droplist:
 Kat/Umbra/Poiyomi Toon-9.0
+![image](https://github.com/timduru/Kat.PoiyomiToonShader/assets/2088877/5d3d725e-d9f2-4b71-b6df-a4cc59786fb5)
+
 
 # Feature List
 - SpecialFX/Emissions0-3: Added Support for Luma Zones 1-4 & Luma Gradients 1-3
