@@ -1,8 +1,8 @@
-Shader ".poiyomi/Poiyomi Toon"
+Shader "Kat/Umbra/Poiyomi Toon-9.0"
 {
 	Properties
 	{
-		[HideInInspector] shader_master_label ("<color=#E75898ff>Poiyomi 9.0.57</color>", Float) = 0
+		[HideInInspector] shader_master_label ("<color=#E75898ff>KatUmbra 1.0.0 - Poiyomi 9.0.57</color>", Float) = 0
 		[HideInInspector] shader_is_using_thry_editor ("", Float) = 0
 		[HideInInspector] shader_locale ("0db0b86376c3dca4b9a6828ef8615fe0", Float) = 0
 		[HideInInspector] footer_youtube ("{texture:{name:icon-youtube,height:16},action:{type:URL,data:https://www.youtube.com/poiyomi},hover:YOUTUBE}", Float) = 0
@@ -2464,7 +2464,8 @@ Shader ".poiyomi/Poiyomi Toon"
 		[HideInInspector][ThryWideEnum(Add, 7, Subtract, 1, Multiply, 2, Divide, 3, Min, 4, Max, 5, Average, 6, Replace, 0)]_EmissionMask0GlobalMaskBlendType ("Blending", Range(0, 1)) = 2
 		
 		[HDR]_EmissionColor ("Emission Color--{reference_property:_EmissionColorThemeIndex}", Color) = (1, 1, 1, 1)
-		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _EmissionColorThemeIndex ("", Int) = 0
+		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0_Luma Gradient1, 5, ColorChord 1_Luma Gradient2, 6, ColorChord 2_Luma Gradient3, 7, ColorChord 3, 8, AL Theme 0_LumaZone1, 9, AL Theme 1_LumaZone2, 10, AL Theme 2_LumaZone3, 11, AL Theme 3_LumaZone4, 12)]  _EmissionColorThemeIndex ("", Int) = 0		
+		
 		[sRGBWarning(true)][Gradient]_EmissionMap ("Emission Map--{reference_properties:[_EmissionMapPan, _EmissionMapUV]}", 2D) = "white" { }
 		[HideInInspector][Vector2]_EmissionMapPan ("Panning", Vector) = (0, 0, 0, 0)
 		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7)] _EmissionMapUV ("UV", Int) = 0
@@ -2549,7 +2550,7 @@ Shader ".poiyomi/Poiyomi Toon"
 		[HideInInspector][ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _EmissionMask1GlobalMask ("Global Mask--{reference_property:_EmissionMask1GlobalMaskBlendType}", Int) = 0
 		[HideInInspector][ThryWideEnum(Add, 7, Subtract, 1, Multiply, 2, Divide, 3, Min, 4, Max, 5, Average, 6, Replace, 0)]_EmissionMask1GlobalMaskBlendType ("Blending", Range(0, 1)) = 2
 		[HDR]_EmissionColor1 ("Emission Color--{reference_property:_EmissionColor1ThemeIndex}", Color) = (1, 1, 1, 1)
-		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _EmissionColor1ThemeIndex ("", Int) = 0
+		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0_Luma Gradient1, 5, ColorChord 1_Luma Gradient2, 6, ColorChord 2_Luma Gradient3, 7, ColorChord 3, 8, AL Theme 0_LumaZone1, 9, AL Theme 1_LumaZone2, 10, AL Theme 2_LumaZone3, 11, AL Theme 3_LumaZone4, 12)]  _EmissionColor1ThemeIndex ("", Int) = 0		
 		[sRGBWarning(true)][Gradient]_EmissionMap1 ("Emission Map--{reference_properties:[_EmissionMap1Pan, _EmissionMap1UV]}", 2D) = "white" { }
 		[HideInInspector][Vector2]_EmissionMap1Pan ("Panning", Vector) = (0, 0, 0, 0)
 		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7)] _EmissionMap1UV ("UV", Int) = 0
@@ -2635,7 +2636,7 @@ Shader ".poiyomi/Poiyomi Toon"
 		[HideInInspector][ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _EmissionMask2GlobalMask ("Global Mask--{reference_property:_EmissionMask2GlobalMaskBlendType}", Int) = 0
 		[HideInInspector][ThryWideEnum(Add, 7, Subtract, 1, Multiply, 2, Divide, 3, Min, 4, Max, 5, Average, 6, Replace, 0)]_EmissionMask2GlobalMaskBlendType ("Blending", Range(0, 1)) = 2
 		[HDR]_EmissionColor2 ("Emission Color--{reference_property:_EmissionColor2ThemeIndex}", Color) = (1, 1, 1, 1)
-		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _EmissionColor2ThemeIndex ("", Int) = 0
+		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0_Luma Gradient1, 5, ColorChord 1_Luma Gradient2, 6, ColorChord 2_Luma Gradient3, 7, ColorChord 3, 8, AL Theme 0_LumaZone1, 9, AL Theme 1_LumaZone2, 10, AL Theme 2_LumaZone3, 11, AL Theme 3_LumaZone4, 12)]  _EmissionColor2ThemeIndex ("", Int) = 0		
 		[Gradient]_EmissionMap2 ("Emission Map--{reference_properties:[_EmissionMap2Pan, _EmissionMap2UV]}", 2D) = "white" { }
 		[HideInInspector][Vector2]_EmissionMap2Pan ("Panning", Vector) = (0, 0, 0, 0)
 		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7)] _EmissionMap2UV ("UV", Int) = 0
@@ -2721,7 +2722,7 @@ Shader ".poiyomi/Poiyomi Toon"
 		[HideInInspector][ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _EmissionMask3GlobalMask ("Global Mask--{reference_property:_EmissionMask3GlobalMaskBlendType}", Int) = 0
 		[HideInInspector][ThryWideEnum(Add, 7, Subtract, 1, Multiply, 2, Divide, 3, Min, 4, Max, 5, Average, 6, Replace, 0)]_EmissionMask3GlobalMaskBlendType ("Blending", Range(0, 1)) = 2
 		[HDR]_EmissionColor3 ("Emission Color--{reference_property:_EmissionColor3ThemeIndex}", Color) = (1, 1, 1, 1)
-		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _EmissionColor3ThemeIndex ("", Int) = 0
+		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0_Luma Gradient1, 5, ColorChord 1_Luma Gradient2, 6, ColorChord 2_Luma Gradient3, 7, ColorChord 3, 8, AL Theme 0_LumaZone1, 9, AL Theme 1_LumaZone2, 10, AL Theme 2_LumaZone3, 11, AL Theme 3_LumaZone4, 12)]  _EmissionColor3ThemeIndex ("", Int) = 0		
 		[sRGBWarning(true)][Gradient]_EmissionMap3 ("Emission Map--{reference_properties:[_EmissionMap3Pan, _EmissionMap3UV]}", 2D) = "white" { }
 		[HideInInspector][Vector2]_EmissionMap3Pan ("Panning", Vector) = (0, 0, 0, 0)
 		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7)] _EmissionMap3UV ("UV", Int) = 0
@@ -3310,6 +3311,15 @@ Shader ".poiyomi/Poiyomi Toon"
 		_AudioLinkSmoothingLowMid ("Low Mid", Range(0, 1)) = 0
 		_AudioLinkSmoothingHighMid ("High Mid", Range(0, 1)) = 0
 		_AudioLinkSmoothingTreble ("Treble", Range(0, 1)) = 0
+
+		[Space(4)]
+		[ThryHeaderLabel(VolumeAdjust)]
+
+		_TTAudioOffset("Audio Offset", Range( -1 , 1)) = 0.0
+		_TTAudioClampMin("Audio Clamp Min", Range( 0 , 1)) = 0.0
+		_TTAudioClampMax("Audio Clamp Max", Range( 0 , 10)) = 10
+		_TTAudioMultiplier("Audio Multiplier", Range( 0 , 10)) = 1
+		
 		[HideInInspector] m_end_audioLink ("Audio Link", Float) = 0
 		
 		[HideInInspector] m_start_audioLinkOverrides ("Overrides", Float) = 0
@@ -8793,6 +8803,9 @@ Shader ".poiyomi/Poiyomi Toon"
 			#endif
 			uniform sampler2D _Stored;
 			uniform float4 _Stored_TexelSize;
+			
+			#define LumaData(x,y) tex2Dlod(_Stored, float4(x, y, 0, 0))
+
 			#endif
 			//endex
 			
@@ -9526,6 +9539,12 @@ Shader ".poiyomi/Poiyomi Toon"
 			float _AudioLinkSmoothingLowMid;
 			float _AudioLinkSmoothingHighMid;
 			float _AudioLinkSmoothingTreble;
+			
+			float _TTAudioOffset;
+			float _TTAudioClampMin;
+			float _TTAudioClampMax;
+			float _TTAudioMultiplier;			
+			
 			
 			float _DebugWaveform;
 			float _DebugDFT;
@@ -12515,6 +12534,7 @@ Shader ".poiyomi/Poiyomi Toon"
 				float audioLinkAvailable;
 				float audioLinkVersion;
 				float4 audioLinkTexture;
+				float audioLinkViaLuma;				
 				float2 detailMask;
 				float2 backFaceDetailIntensity;
 				float globalEmission;
@@ -14329,6 +14349,33 @@ Shader ".poiyomi/Poiyomi Toon"
 				else
 				return c / max(c.r, max(c.g, c.b));
 			}
+
+			
+			
+			bool LumaIsAvailable()
+			{
+				return AudioLinkData( ALPASS_AUDIOLINK + uint2( 0, 56 ) ).r ;
+			}
+			
+
+//Zone1-4 		
+			float4 getLumaZone(int zonenum) 
+			{
+				return AudioLinkData( ALPASS_AUDIOLINK + uint2( 0, 64 - zonenum  ) );
+			}
+
+
+//ColorChord0-2 => Gradient1-3	
+			float3 getLumaGradient(in PoiMesh poiMesh, uint ColorCordNum, float offset) {
+				return AudioLinkLerp( ALPASS_AUDIOLINK +  float2( 0, 59 - ColorCordNum ) + float2( poiMesh.uv[0].x * AUDIOLINK_WIDTH, poiMesh.uv[0].y  ) );
+			}
+
+
+			float volumeAdjust(float2 bandval)
+			{
+				return float2( clamp(_TTAudioOffset + bandval.x * _TTAudioMultiplier, _TTAudioClampMin, _TTAudioClampMax ), bandval.y);
+			} 
+			
 			
 			void initPoiAudioLink(inout PoiMods poiMods)
 			{
@@ -14338,10 +14385,10 @@ Shader ".poiyomi/Poiyomi Toon"
 				{
 					poiMods.audioLinkAvailable = true;
 					poiMods.audioLinkVersion = AudioLinkGetVersion();
-					poiMods.audioLink[0] = _AudioLinkSmoothingBass == 0 ? AudioLinkData(ALPASS_AUDIOLINK + float2(0, 0))[0] : AudioLinkData(ALPASS_FILTEREDAUDIOLINK + float2((1 - _AudioLinkSmoothingBass) * 15.95, 0))[0];
-					poiMods.audioLink[1] = _AudioLinkSmoothingLowMid == 0 ? AudioLinkData(ALPASS_AUDIOLINK + float2(0, 1))[0] : AudioLinkData(ALPASS_FILTEREDAUDIOLINK + float2((1 - _AudioLinkSmoothingLowMid) * 15.95, 1))[0];
-					poiMods.audioLink[2] = _AudioLinkSmoothingHighMid == 0 ? AudioLinkData(ALPASS_AUDIOLINK + float2(0, 2))[0] : AudioLinkData(ALPASS_FILTEREDAUDIOLINK + float2((1 - _AudioLinkSmoothingHighMid) * 15.95, 2))[0];
-					poiMods.audioLink[3] = _AudioLinkSmoothingTreble == 0 ? AudioLinkData(ALPASS_AUDIOLINK + float2(0, 3))[0] : AudioLinkData(ALPASS_FILTEREDAUDIOLINK + float2((1 - _AudioLinkSmoothingTreble) * 15.95, 3))[0];
+					poiMods.audioLink[0] = volumeAdjust(_AudioLinkSmoothingBass == 0 ? AudioLinkData(ALPASS_AUDIOLINK + float2(0, 0))[0] : AudioLinkData(ALPASS_FILTEREDAUDIOLINK + float2((1 - _AudioLinkSmoothingBass) * 15.95, 0))[0]);
+					poiMods.audioLink[1] = volumeAdjust(_AudioLinkSmoothingLowMid == 0 ? AudioLinkData(ALPASS_AUDIOLINK + float2(0, 1))[0] : AudioLinkData(ALPASS_FILTEREDAUDIOLINK + float2((1 - _AudioLinkSmoothingLowMid) * 15.95, 1))[0]);
+					poiMods.audioLink[2] = volumeAdjust(_AudioLinkSmoothingHighMid == 0 ? AudioLinkData(ALPASS_AUDIOLINK + float2(0, 2))[0] : AudioLinkData(ALPASS_FILTEREDAUDIOLINK + float2((1 - _AudioLinkSmoothingHighMid) * 15.95, 2))[0]);
+					poiMods.audioLink[3] = volumeAdjust(_AudioLinkSmoothingTreble == 0 ? AudioLinkData(ALPASS_AUDIOLINK + float2(0, 3))[0] : AudioLinkData(ALPASS_FILTEREDAUDIOLINK + float2((1 - _AudioLinkSmoothingTreble) * 15.95, 3))[0]);
 					poiMods.audioLink[4] = AudioLinkData(ALPASS_GENERALVU + float2(8, 0))[0];
 					/*
 					poiMods.globalColorTheme[4] = AudioLinkData( ALPASS_CCCOLORS + uint2( 0, 0 ) );
@@ -14360,11 +14407,26 @@ Shader ".poiyomi/Poiyomi Toon"
 					poiMods.globalColorTheme[6] = float4(AudioLinkCCtoRGB(glsl_mod(AudioLinkData(ALPASS_CCINTERNAL + uint2(4, 0))[0], AUDIOLINK_EXPBINS), 1, AUDIOLINK_ROOTNOTE), 1.0);
 					poiMods.globalColorTheme[7] = float4(AudioLinkCCtoRGB(glsl_mod(AudioLinkData(ALPASS_CCINTERNAL + uint2(5, 0))[0], AUDIOLINK_EXPBINS), 1, AUDIOLINK_ROOTNOTE), 1.0);
 					
-					poiMods.globalColorTheme[8] = AudioLinkData(ALPASS_THEME_COLOR0);
-					poiMods.globalColorTheme[9] = AudioLinkData(ALPASS_THEME_COLOR1);
-					poiMods.globalColorTheme[10] = AudioLinkData(ALPASS_THEME_COLOR2);
-					poiMods.globalColorTheme[11] = AudioLinkData(ALPASS_THEME_COLOR3);
-					return;
+						
+					if (LumaIsAvailable())
+					{
+						poiMods.audioLinkAvailable = true;
+						poiMods.audioLinkViaLuma = true;
+						
+						poiMods.globalColorTheme[8] = getLumaZone(1);
+						poiMods.globalColorTheme[9] = getLumaZone(2);
+						poiMods.globalColorTheme[10] = getLumaZone(3);
+						poiMods.globalColorTheme[11] = getLumaZone(4);
+						return;
+					}
+					else 
+					{				
+						poiMods.globalColorTheme[8] = AudioLinkData(ALPASS_THEME_COLOR0);
+						poiMods.globalColorTheme[9] = AudioLinkData(ALPASS_THEME_COLOR1);
+						poiMods.globalColorTheme[10] = AudioLinkData(ALPASS_THEME_COLOR2);
+						poiMods.globalColorTheme[11] = AudioLinkData(ALPASS_THEME_COLOR3);
+						return;
+					}
 				}
 				
 				if (_AudioLinkBandOverridesEnabled)
@@ -20749,6 +20811,18 @@ Shader ".poiyomi/Poiyomi Toon"
 				}
 				#endif
 			}
+
+
+			void applyLumaGradient(in PoiMesh poiMesh, in PoiMods poiMods, inout float3 emissionColor, in float themeIndex, in float nDotV)
+			{
+				#ifdef POI_AUDIOLINK
+				if (poiMods.audioLinkAvailable && poiMods.audioLinkViaLuma && themeIndex >= 5 && themeIndex <= 7)
+				{
+					emissionColor =  getLumaGradient(poiMesh, themeIndex-5,  saturate(1 - nDotV));
+				}
+				#endif
+			}			
+			
 			//endex
 			
 			//ifex _EnableEmission==0
@@ -20807,6 +20881,9 @@ Shader ".poiyomi/Poiyomi Toon"
 				{
 					emissionStrength0 *= calculateBlinkingEmission(_EmissiveBlink_Min, _EmissiveBlink_Max, _EmissiveBlink_Velocity, _EmissionBlinkingOffset);
 				}
+				
+				applyLumaGradient(poiMesh, poiMods, emissionColor0, _EmissionColorThemeIndex, poiLight.nDotV);
+
 				emissionColor0 = hueShift(emissionColor0, frac(_EmissionHueShift + _EmissionHueShiftSpeed * _Time.x) * _EmissionHueShiftEnabled);
 				emissionColor0 = lerp(emissionColor0, dot(emissionColor0, float3(0.3, 0.59, 0.11)), - (_EmissionSaturation) * _EmissionHueShiftEnabled);
 				
@@ -20900,6 +20977,8 @@ Shader ".poiyomi/Poiyomi Toon"
 				{
 					emissionStrength1 *= calculateBlinkingEmission(_EmissiveBlink_Min1, _EmissiveBlink_Max1, _EmissiveBlink_Velocity1, _EmissionBlinkingOffset1);
 				}
+				applyLumaGradient(poiMesh,poiMods, emissionColor1, _EmissionColor1ThemeIndex, poiLight.nDotV);
+				
 				emissionColor1 = hueShift(emissionColor1, frac(_EmissionHueShift1 + _EmissionHueShiftSpeed1 * _Time.x) * _EmissionHueShiftEnabled1);
 				emissionColor1 = lerp(emissionColor1, dot(emissionColor1, float3(0.3, 0.59, 0.11)), - (_EmissionSaturation1) * _EmissionHueShiftEnabled1);
 				
@@ -20983,6 +21062,8 @@ Shader ".poiyomi/Poiyomi Toon"
 				{
 					emissionStrength2 *= calculateBlinkingEmission(_EmissiveBlink_Min2, _EmissiveBlink_Max2, _EmissiveBlink_Velocity2, _EmissionBlinkingOffset2);
 				}
+				applyLumaGradient(poiMesh,poiMods, emissionColor2, _EmissionColor2ThemeIndex, poiLight.nDotV);
+				
 				emissionColor2 = hueShift(emissionColor2, frac(_EmissionHueShift2 + _EmissionHueShiftSpeed2 * _Time.x) * _EmissionHueShiftEnabled2);
 				emissionColor2 = lerp(emissionColor2, dot(emissionColor2, float3(0.3, 0.59, 0.11)), - (_EmissionSaturation2) * _EmissionHueShiftEnabled2);
 				
@@ -21064,6 +21145,9 @@ Shader ".poiyomi/Poiyomi Toon"
 				{
 					emissionStrength3 *= calculateBlinkingEmission(_EmissiveBlink_Min3, _EmissiveBlink_Max3, _EmissiveBlink_Velocity3, _EmissionBlinkingOffset3);
 				}
+
+				applyLumaGradient(poiMesh,poiMods, emissionColor3, _EmissionColor3ThemeIndex, poiLight.nDotV);
+
 				emissionColor3 = hueShift(emissionColor3, frac(_EmissionHueShift3 + _EmissionHueShiftSpeed3 * _Time.x) * _EmissionHueShiftEnabled3);
 				emissionColor3 = lerp(emissionColor3, dot(emissionColor3, float3(0.3, 0.59, 0.11)), - (_EmissionSaturation3) * _EmissionHueShiftEnabled3);
 				
