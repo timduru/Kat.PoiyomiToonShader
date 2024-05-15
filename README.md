@@ -60,6 +60,13 @@ you simply need to pick the Luma Zone1-4 or Gradient1-3 from the original Poiyom
 	Currently it does the correction for all 4 AL bands
 
 
+# Testing 
+Join the Furality Sylva test world:
+Luma structures are the same for Umbra so it should be compatible.
+
+https://vrchat.com/home/world/wrld_3f72a6ea-ecfb-4f27-a730-750ca6d97401
+
+
 # Uninstallation
 Delete the KatUmbra shader file from where you dropped it into your project. 
 
