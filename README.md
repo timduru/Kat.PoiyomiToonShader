@@ -15,11 +15,12 @@ Simply download the KatFuralityUmbra-PoiyomiToon-9.0.shader from the latest [Rel
 
 
 # Requirements
-- Install the regular Free Poiyomi 9.0.x package
+- Install the official Poiyomi 9.0.x package
+- AudioLink needs to be activated on the material (Globally in the Poiyomi General AudioLink Section)
 
 
 # Installation
-- Drop the KatFuralityUmbra-PoiyomiToon-9.0.shader file where you want in your unity project. 
+- Drop the KatFuralityUmbra-PoiyomiToon-9.0.shader file where you want into your unity project folder. 
 - Wait that it finishes compiling.
 
 # Feature List
@@ -43,8 +44,11 @@ Kat/Umbra/Poiyomi Toon-9.0
 
 
 ## SpecialFX/ Emissions0-3:  Umbra Configuration
-After configuring the Poiyomi Emissions like you would for a regular Audiolink reaction,
+
+After configuring the Poiyomi Emissions like you would for a regular Poi Emission 
 you simply need to pick the Luma Zone1-4 or Gradient1-3 from the original Poiyomi drop list
+
+(with or without AudioLink if you don't want to be audio reactive and just use the luma zones or gradients alone)
 
 ![image](https://github.com/timduru/Kat.PoiyomiToonShader/assets/2088877/c2c7799b-cac4-48ec-8a9a-dd934f654187)
 
@@ -54,9 +58,13 @@ you simply need to pick the Luma Zone1-4 or Gradient1-3 from the original Poiyom
 	
 
 ## AudioLink Level Extra Configurations
+
 - Multiplier: Multiplies the audiolink band values retrieved by this value. (usefull for worlds where audiolink is set to very low levels but still registering something) 
 - Offset: Adds the value to the audiolink band values retrieved. (Usefull if you still want to light up your emissions a bit even in world that doesn't register anything in the audio levels. )
-- clamp min/max: clamps the audiolink band values with these settings, so it'll never be over or under the Min / Max (clamp max is usefull for example if you don't want to light up like a christmass tree in world that have levels set too high)
+- clamp min/max: clamps the audiolink band values with these settings, so it'll never be under or over the Min / Max 
+
+(clamp max is usefull for example if you don't want to light up like a christmass tree in worlds that have levels set too high, and clamp min allows you to have partial)
+
 
 ![image](https://github.com/timduru/Kat.PoiyomiToonShader/assets/2088877/b9c6551a-5432-4912-91ed-7df0e840da66)
 

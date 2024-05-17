@@ -2,7 +2,7 @@ Shader "Kat/Umbra/Poiyomi Toon-9.0"
 {
 	Properties
 	{
-		[HideInInspector] shader_master_label ("<color=#E75898ff>KatUmbra 1.0.0 - Poiyomi 9.0.57</color>", Float) = 0
+		[HideInInspector] shader_master_label ("<color=#E75898ff>KatUmbra 1.0.1 - Poiyomi 9.0.57</color>", Float) = 0
 		[HideInInspector] shader_is_using_thry_editor ("", Float) = 0
 		[HideInInspector] shader_locale ("0db0b86376c3dca4b9a6828ef8615fe0", Float) = 0
 		[HideInInspector] footer_youtube ("{texture:{name:icon-youtube,height:16},action:{type:URL,data:https://www.youtube.com/poiyomi},hover:YOUTUBE}", Float) = 0
@@ -3318,7 +3318,7 @@ Shader "Kat/Umbra/Poiyomi Toon-9.0"
 		_TTAudioOffset("Audio Offset", Range( -1 , 1)) = 0.0
 		_TTAudioClampMin("Audio Clamp Min", Range( 0 , 1)) = 0.0
 		_TTAudioClampMax("Audio Clamp Max", Range( 0 , 10)) = 10
-		_TTAudioMultiplier("Audio Multiplier", Range( 0 , 10)) = 1
+		_TTAudioMultiplier("Audio Multiplier", Range( 0 , 20)) = 1
 		
 		[HideInInspector] m_end_audioLink ("Audio Link", Float) = 0
 		
@@ -14406,29 +14406,30 @@ Shader "Kat/Umbra/Poiyomi Toon-9.0"
 					poiMods.globalColorTheme[5] = float4(AudioLinkCCtoRGB(glsl_mod(AudioLinkData(ALPASS_CCINTERNAL + uint2(3, 0))[0], AUDIOLINK_EXPBINS), 1, AUDIOLINK_ROOTNOTE), 1.0);
 					poiMods.globalColorTheme[6] = float4(AudioLinkCCtoRGB(glsl_mod(AudioLinkData(ALPASS_CCINTERNAL + uint2(4, 0))[0], AUDIOLINK_EXPBINS), 1, AUDIOLINK_ROOTNOTE), 1.0);
 					poiMods.globalColorTheme[7] = float4(AudioLinkCCtoRGB(glsl_mod(AudioLinkData(ALPASS_CCINTERNAL + uint2(5, 0))[0], AUDIOLINK_EXPBINS), 1, AUDIOLINK_ROOTNOTE), 1.0);
-					
-						
-					if (LumaIsAvailable())
-					{
-						poiMods.audioLinkAvailable = true;
-						poiMods.audioLinkViaLuma = true;
-						
-						poiMods.globalColorTheme[8] = getLumaZone(1);
-						poiMods.globalColorTheme[9] = getLumaZone(2);
-						poiMods.globalColorTheme[10] = getLumaZone(3);
-						poiMods.globalColorTheme[11] = getLumaZone(4);
-						return;
-					}
-					else 
-					{				
-						poiMods.globalColorTheme[8] = AudioLinkData(ALPASS_THEME_COLOR0);
-						poiMods.globalColorTheme[9] = AudioLinkData(ALPASS_THEME_COLOR1);
-						poiMods.globalColorTheme[10] = AudioLinkData(ALPASS_THEME_COLOR2);
-						poiMods.globalColorTheme[11] = AudioLinkData(ALPASS_THEME_COLOR3);
-						return;
-					}
+									
 				}
 				
+				if (LumaIsAvailable())
+				{
+					poiMods.audioLinkAvailable = true;
+					poiMods.audioLinkViaLuma = true;
+					
+					poiMods.globalColorTheme[8] = getLumaZone(1);
+					poiMods.globalColorTheme[9] = getLumaZone(2);
+					poiMods.globalColorTheme[10] = getLumaZone(3);
+					poiMods.globalColorTheme[11] = getLumaZone(4);
+					return;
+				}
+				else if(AudioLinkIsAvailable())
+				{				
+					poiMods.globalColorTheme[8] = AudioLinkData(ALPASS_THEME_COLOR0);
+					poiMods.globalColorTheme[9] = AudioLinkData(ALPASS_THEME_COLOR1);
+					poiMods.globalColorTheme[10] = AudioLinkData(ALPASS_THEME_COLOR2);
+					poiMods.globalColorTheme[11] = AudioLinkData(ALPASS_THEME_COLOR3);
+					return;
+				}
+					
+					
 				if (_AudioLinkBandOverridesEnabled)
 				{
 					poiMods.audioLinkAvailable = true;
