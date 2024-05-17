@@ -12534,7 +12534,7 @@ Shader "Kat/Umbra/Poiyomi Toon-9.0"
 				float audioLinkAvailable;
 				float audioLinkVersion;
 				float4 audioLinkTexture;
-				float audioLinkViaLuma;				
+				float lumaAvailable;				
 				float2 detailMask;
 				float2 backFaceDetailIntensity;
 				float globalEmission;
@@ -14412,7 +14412,7 @@ Shader "Kat/Umbra/Poiyomi Toon-9.0"
 				if (LumaIsAvailable())
 				{
 					poiMods.audioLinkAvailable = true;
-					poiMods.audioLinkViaLuma = true;
+					poiMods.lumaAvailable = true;
 					
 					poiMods.globalColorTheme[8] = getLumaZone(1);
 					poiMods.globalColorTheme[9] = getLumaZone(2);
@@ -20817,7 +20817,7 @@ Shader "Kat/Umbra/Poiyomi Toon-9.0"
 			void applyLumaGradient(in PoiMesh poiMesh, in PoiMods poiMods, inout float3 emissionColor, in float themeIndex, in float nDotV)
 			{
 				#ifdef POI_AUDIOLINK
-				if (poiMods.audioLinkAvailable && poiMods.audioLinkViaLuma && themeIndex >= 5 && themeIndex <= 7)
+				if (poiMods.audioLinkAvailable && poiMods.lumaAvailable && themeIndex >= 5 && themeIndex <= 7)
 				{
 					emissionColor =  getLumaGradient(poiMesh, themeIndex-5,  saturate(1 - nDotV));
 				}

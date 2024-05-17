@@ -53,8 +53,11 @@ you simply need to pick the Luma Zone1-4 or Gradient1-3 from the original Poiyom
 ![image](https://github.com/timduru/Kat.PoiyomiToonShader/assets/2088877/c2c7799b-cac4-48ec-8a9a-dd934f654187)
 
 	
-	Note that you can also animate the value from the droplist as you would with any poi parameters. 
+	Notes:
+	You can also animate the value from the droplist as you would with any poi parameters. 
 	So you can change the zones / gradients you are using on the fly through VRChat's menus and an animation as usual. 
+	
+	Emmission map is not used for the luma colors, only the mask, so use the mask to limit where the gradients & zones should be applied.
 	
 
 ## AudioLink Level Extra Configurations
@@ -82,6 +85,12 @@ https://vrchat.com/home/world/wrld_3f72a6ea-ecfb-4f27-a730-750ca6d97401
 
 # Uninstallation
 Delete the KatUmbra shader file from where you dropped it into your project. 
+
+# Update the shader to a newer version
+- Drop the new KatFuralityUmbra-PoiyomiToon-9.0.shader file using a file explorer to replace the existing file in your unity project folder.
+- Unlock your materials which are using the Kat shader
+- Wait that it finishes compiling.
+- Upload the avatar
 
 
 # Links:
